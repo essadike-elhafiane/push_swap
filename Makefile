@@ -6,7 +6,7 @@
 #    By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 18:34:16 by eelhafia          #+#    #+#              #
-#    Updated: 2023/01/31 15:47:05 by eelhafia         ###   ########.fr        #
+#    Updated: 2023/02/03 15:22:36 by eelhafia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR = ar rc
 CC = cc -Wall -Wextra -Werror 
 NAME1 = push_swap
 
-SRC = push_swap.c linked_list_op.c oper_stk.c function_help.c function_help_1.c function_check.c swap_all.c
+SRC = push_swap.c linked_list_op.c oper_stk.c function_help.c function_help_1.c function_check.c swap_all.c functions.c
 
 LIBFT = libft.a
 

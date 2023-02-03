@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:27:54 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/01/30 14:28:44 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/03 16:12:11 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ t_stk	*ft_init_stack(char **spl);
 void	ft_puterror(char *s);
 void	fun_free(t_stk **a);
 t_stk	*function_free(t_stk *tmp);
+void	free_spl(char **spl);
 t_stk	*ft_lstlasttt(t_stk *lst);
 t_stk	*ft_lstlastt(t_stk *lst);
+int		check_place_min_of_n(t_stk *a, int min);
+void	swap_all_help(int j, int min, t_stk **a, t_stk **b);
 #endif

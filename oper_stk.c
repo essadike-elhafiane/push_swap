@@ -35,32 +35,32 @@ void	sa(t_stk *a, char *s)
 	ft_putstr_fd (s, 1);
 }
 
-void    rra(t_stk **a, char *s)
+void	rra(t_stk **a, char *s)
 {
-    t_stk    *tmp1;
-    t_stk    *tmp;
+	t_stk	*tmp1;
+	t_stk	*tmp;
 
-    tmp1 = *a;
-    while (tmp1->next)
-        tmp1 = tmp1->next;
-    tmp1 = ft_new(tmp1->content);
-    tmp = ft_lstlasttt(*a);
-    tmp1->next = (*a);
-    (*a) = tmp1;
-    tmp1 = ft_lstlastt(*a);
-    tmp1->next = NULL;
+	tmp1 = *a;
+	while (tmp1->next)
+		tmp1 = tmp1->next;
+	tmp1 = ft_new(tmp1->content);
+	tmp = ft_lstlasttt(*a);
+	tmp1->next = (*a);
+	(*a) = tmp1;
+	tmp1 = ft_lstlastt(*a);
+	tmp1->next = NULL;
 	ft_putstr_fd (s, 1);
-    free(tmp);
+	free(tmp);
 	tmp = NULL;
 }
 
 void	ra(t_stk **a, char *s)
 {
-	if(a == NULL || *a == NULL)
-		return;
 	t_stk	*tmp;
 	t_stk	*tmp1;
 
+	if (a == NULL || *a == NULL)
+		return ;
 	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;

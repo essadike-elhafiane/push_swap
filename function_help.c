@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:33:21 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/01/07 22:35:39 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:26:25 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,19 @@ int	chek_sort_arr(int *s, int j)
 	return (0);
 }
 
-void	push_arr(t_stk *a, int *s)
+int	*push_arr(t_stk *a, int len)
 {
 	int	i;
+	int	*s;
 
+	s = malloc(len * sizeof(int));
 	i = 0;
 	while (a)
 	{
 		s[i++] = a->content;
 		a = a->next;
 	}
+	return (s);
 }
 
 int	check_pivot(t_stk *a, int deff_pivot)
@@ -77,10 +80,9 @@ int	check_pivot(t_stk *a, int deff_pivot)
 	int		*s;
 
 	y.max = ft_lstsize((t_list *)a);
-	if(y.max <= deff_pivot)
-		return 0;
-	s = malloc(y.max * sizeof(int));
-	push_arr(a, s);
+	if (y.max <= deff_pivot)
+		return (0);
+	s = push_arr(a, y.max);
 	y.i = -1;
 	while (!chek_sort_arr(s, y.max))
 	{

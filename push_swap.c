@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:29:34 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/01/31 15:58:30 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:19:25 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,21 +90,6 @@ void	distrubition_fun(t_stk **a, t_stk **b)
 		swap_all(a, b);
 }
 
-void free_spl(char **spl)
-{
-	int i;
-
-	i = 0;
-	if(!spl)
-		return;
-	while(spl[i])
-	{
-		free(spl[i]);
-		i++;
-	}
-	free(spl);
-}
-
 int	main(int ac, char **av)
 {
 	t_stk1	y;
@@ -131,8 +116,7 @@ int	main(int ac, char **av)
 	b = ft_new(5);
 	free_spl(y.spl);
 	b = function_free(b);
-	return(fun_free(&b),fun_free(&a),0);
+	return (fun_free(&b), 0);
 }
 
 // 2 5 4 3 1
-

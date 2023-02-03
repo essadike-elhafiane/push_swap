@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:59:16 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/01/31 15:48:19 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/03 16:12:49 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,68 +124,7 @@ void	swap_max(t_stk **b, t_stk **a)
 			swap_max_help(b, a, y.max);
 	}
 }
-int cherche_front(t_stk *a, int min)
-{
-	t_stk1	y;
 
-	y.max = 0;
-	if(!(a)->next->content)
-		return(155);
-	y.i = ft_lstsize((t_list *)a);
-	while (y.max < y.i)
-	{
-		if (a->content <= min)
-			return (y.max);
-		a = a->next;
-		y.max++;
-	}
-	return (y.max);
-}
-
-int cherche_back(t_stk *a, int min)
-{
-	t_stk1	y;
-
-	y.max = 0;
-	void *c;
-	t_stk *m;
-	if(!a)
-		return(155);
-	y.i = ft_lstsize((t_list *)a);
-	while (y.max < y.i-3)
-	{
-		y.min = ft_lstlasttt(a)->content;
-		if (y.min <= min)
-			return (y.max);
-		c = ft_lstlasttt(a);
-		m = ft_lstlastt(a);
-		m->next = NULL;
-		free(c);
-		y.max++;
-	}
-	return (y.max);
-}
-
-int	check_place_min_of_n(t_stk *a, int min)
-{
-	t_stk1	y;
-
-	y.max = 0;
-	y.i = ft_lstsize((t_list *)a);
-	while (y.max <= y.i / 2)
-	{
-		if (a->content <= min)
-			return (1);
-		a = a->next;
-		y.max++;
-	}
-	return (0);
-}
-// void sss(t_stk **a, t_stk **b, char *s)
-// {
-	
-// 	ft_putstr_fd (s, 1);
-// }
 void	swap_all(t_stk **a, t_stk **b)
 {
 	t_stk1	y;
@@ -195,47 +134,13 @@ void	swap_all(t_stk **a, t_stk **b)
 	if (ft_lstsize((t_list *) *a) >= 499)
 	{
 		y.max = 20;
-		y.i = 6;
+		y.i = 8;
 	}
-	int i;
-	
 	while (--y.max)
 	{
 		y.min = check_pivot(*a, y.i);
-		// if(y.min == 0)
-		// 	y.min = check_max(*a);
-		// int x = check_min(*a);
 		y.j = ft_lstsize((t_list *) *a);
-		// if(y.j <= 20)
-		// 	y.min = check_max(*a);
-		while (y.j--)
-		{
-			i = 0;
-			
-			while(check_place_min_of_n(*a, y.min) && i == 0 )
-			{
-				if (y.min >= (*a)->content)
-				{
-					pb(a, b, "pb\n");
-					i = 1;
-				}
-				else if(check_place_min_of_n(*a, y.min))
-					ra(a, "ra\n");
-			}
-			// printf("front = %d || back = %d \n\n", cherche_front(*a, y.min) ,cherche_back(*a, y.min));
-			// // return ;
-			// while( i == 0 )
-			// {
-			// 	if (y.min >= (*a)->content)
-			// 	{
-			// 		pb(a, b, "pb\n");
-			// 		i = 1;
-			// 	}
-			// 	else if(!check_place_min_of_n(*a, y.min))
-			// 		rra(a, "rra\n");
-			// 	// printf("%d\n\n", check_place_min_of_n(*a, y.min));
-			// }
-		}
+		swap_all_help(y.j, y.min, a, b);
 	}
 	swap_min(a, b);
 	swap_max(b, a);
@@ -261,8 +166,7 @@ void	swap_all(t_stk **a, t_stk **b)
 // 		y.j = ft_lstsize((t_list *) *a);
 // 		while(y.j / 5 > 0)
 // 		{
-// 			i = check_place_min_of_n(*a, y.min);
-			
+// 			i = check_place_min_of_n(*a, y.min);	
 // 			while (i == 1 && y.j / 5 > 0)
 // 			{
 // 				if (y.min >= (*a)->content)
@@ -274,8 +178,7 @@ void	swap_all(t_stk **a, t_stk **b)
 // 					ra(a, "ra\n");
 // 				i = check_place_min_of_n(*a, y.min);
 // 				// printf("%d\n\n\n", check_place_min_of_n(*a, y.min));
-// 			}
-			
+// 			}	
 // 			while (i == 0 && y.j / 5 > 0)
 // 			{
 // 				if (y.min >= (*a)->content)
@@ -300,8 +203,8 @@ void	swap_all(t_stk **a, t_stk **b)
 // {
 // 	t_stk1	y;
 
-// 	y.max = 10;
-// 	y.i = 5;
+// 	y.max = 8;
+// 	y.i = 4;
 // 	if (ft_lstsize((t_list *) *a) >= 499)
 // 	{
 // 		y.max = 20;
@@ -320,7 +223,6 @@ void	swap_all(t_stk **a, t_stk **b)
 // 			else
 // 				ra(a, "ra\n");
 // 		}
-		
 // 	}
 // 	swap_min(a, b);
 // 	swap_max(b, a);
