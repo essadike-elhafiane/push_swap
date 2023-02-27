@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 20:13:57 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/15 21:07:04 by eelhafia         ###   ########.fr       */
+/*   Created: 2023/02/17 22:07:29 by eelhafia          #+#    #+#             */
+/*   Updated: 2023/02/25 12:41:25 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	main(int ac, char **av)
 {
-	int		i;
-	int		x;
-	char	*str;
+	t_stk1	y;
+	t_stk	*a;
+	t_stk	*b;
 
-	i = 0;
-	x = 0;
-	if (!s1 && !s2)
+	a = NULL;
+	y.i = 1;
+	if (ac < 2)
 		return (0);
-	if (!s1)
-		return (ft_strdup(s2));
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) +2) * sizeof(char));
-	if (!str)
-		return (0);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	str[i++] = ' ';
-	while (s2[x])
-		str[i++] = s2[x++];
-	str[i] = '\0';
-	free((void *)s1);
-	return (str);
+	y.spl = get_input(ac, av);
+	ft_check_error(y.spl);
+	a = ft_init_stack(y.spl);
+	free_spl(y.spl);
+	if (multi_num(a))
+		ft_puterror("Error\n");
+	if (ft_lstsize((t_list *)a) == 1 || check_sort(a) == 1)
+		return (fun_free(&a), 0);
+	distrubition_fun(&a, &b);
+	fun_free(&a);
+	return (0);
 }

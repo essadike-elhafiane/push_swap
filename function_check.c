@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:36:14 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/01/22 16:54:36 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/17 22:31:53 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	check_max(t_stk *a)
 
 int	check_sort(t_stk *a)
 {
+	if (!a)
+		return (0);
 	if ((a)->next == NULL)
 		return (1);
 	while ((a)->content < (a)->next->content && (a)->next != NULL)

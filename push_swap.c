@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:29:34 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/03 15:19:25 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/26 22:54:59 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,22 @@ void	swap_3(t_stk **a)
 
 char	**get_input(int ac, char **av)
 {
-	t_stk1	y;
+	char	*s;
+	char	**str;
+	int		x;
 
-	y.i = 1;
-	y.j = 0;
-	if (ac == 2)
-		return (ft_split(av[1], ' '));
-	else if (ac > 2)
+	s = NULL;
+	x = 0;
+	if (ac > 1)
 	{
-		y.spl = malloc(sizeof(char *) * ac);
-		if (!y.spl)
+		while (++x < ac)
 		{
-			ft_puterror("Error");
+			arg_empty(av[x]);
+			s = ft_strjoin(s, av[x]);
 		}
-		while (av[y.i])
-		{
-			y.spl[y.j++] = ft_strdup(av[y.i++]);
-		}
-		y.spl[y.j] = NULL;
-		return (y.spl);
+		str = ft_split(s, ' ');
+		free(s);
+		return (str);
 	}
 	return (NULL);
 }
@@ -84,39 +81,8 @@ void	distrubition_fun(t_stk **a, t_stk **b)
 		swap_3 (a);
 	else if (ft_lstsize((t_list *)*a) <= 5)
 		swap_5(a, b);
-	else if (ft_lstsize((t_list *)*a) <= 40)
-		swap_all(a, b);
+	else if (ft_lstsize((t_list *)*a) <= 30)
+		swap_30(a, b);
 	else
 		swap_all(a, b);
 }
-
-int	main(int ac, char **av)
-{
-	t_stk1	y;
-	t_stk	*a;
-	t_stk	*b;
-
-	a = NULL;
-	y.i = 1;
-	if (ac < 2)
-		ft_puterror("Error !");
-	else
-	{
-		if (ac == 2)
-			y.spl = ft_split(av[1], ' ');
-		y.spl = get_input(ac, av);
-		ft_check_error(y.spl);
-		a = ft_init_stack(y.spl);
-		if (multi_num(a))
-			ft_puterror("Error");
-		if (ft_lstsize((t_list *)a) == 1 || check_sort(a) == 1)
-			return (0);
-		distrubition_fun(&a, &b);
-	}
-	b = ft_new(5);
-	free_spl(y.spl);
-	b = function_free(b);
-	return (fun_free(&b), 0);
-}
-
-// 2 5 4 3 1

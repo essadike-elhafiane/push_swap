@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 23:42:27 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/01/07 02:15:38 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/19 08:55:22 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ t_stk	*ft_init_stack(char **spl)
 	t_stk	*tmp;
 
 	i = 1;
-	a = ft_new(atoi(spl[0]));
+	a = ft_new(ft_atoi(spl[0]));
 	tmp = a;
 	while (spl[i])
 	{
-		tmp->next = ft_new(atoi(spl[i++]));
+		tmp->next = ft_new(ft_atoi(spl[i++]));
 		tmp = tmp->next;
 	}
 	return (a);
@@ -47,9 +47,16 @@ int	ft_str_isdigit(char *str)
 	{
 		if (*str == '-')
 			str++;
+		else if (*str == '+')
+			str++;
 		if (!ft_isdigit(*str))
 			return (0);
-		str++;
+		while (ft_isdigit(*str))
+			str++;
+		if (*str == '-')
+			return (0);
+		if (*str == ' ')
+			str++;
 	}
 	return (1);
 }
@@ -82,7 +89,7 @@ void	ft_check_error(char **spl)
 	while (spl[i])
 	{
 		if (!ft_str_isdigit(spl[i]))
-			ft_puterror("Error");
+			ft_puterror("Error\n");
 		i++;
 	}
 }

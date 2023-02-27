@@ -32,7 +32,8 @@ void	sa(t_stk *a, char *s)
 	tmp0 = a->content;
 	a->content = tmp;
 	a->next->content = tmp0;
-	ft_putstr_fd (s, 1);
+	if (s)
+		ft_putstr_fd(s, 1);
 }
 
 void	rra(t_stk **a, char *s)
@@ -40,17 +41,19 @@ void	rra(t_stk **a, char *s)
 	t_stk	*tmp1;
 	t_stk	*tmp;
 
+	if (ft_lstsize((t_list *) *a) < 2)
+		return ;
+	if (a == NULL || *a == NULL)
+		return ;
 	tmp1 = *a;
 	while (tmp1->next)
 		tmp1 = tmp1->next;
-	tmp1 = ft_new(tmp1->content);
-	tmp = ft_lstlasttt(*a);
+	tmp = ft_lstlastt(*a);
+	tmp->next = NULL;
 	tmp1->next = (*a);
 	(*a) = tmp1;
-	tmp1 = ft_lstlastt(*a);
-	tmp1->next = NULL;
-	ft_putstr_fd (s, 1);
-	free(tmp);
+	if (s)
+		ft_putstr_fd(s, 1);
 	tmp = NULL;
 }
 
@@ -64,27 +67,24 @@ void	ra(t_stk **a, char *s)
 	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = ft_new((*a)->content);
 	tmp1 = *a;
 	(*a) = (*a)->next;
-	tmp = (*a);
-	ft_putstr_fd(s, 1);
-	function_free(tmp1);
+	tmp1->next = NULL;
+	tmp->next = tmp1;
+	if (s)
+		ft_putstr_fd(s, 1);
 }
 
 void	pb(t_stk **a, t_stk **b, char *s)
 {
 	t_stk	*tmp;
-	t_stk	*tmp1;
 
 	if (!(*a))
 		return ;
-	tmp1 = (*a);
-	tmp = ft_new((*a)->content);
+	tmp = (*a);
+	*a = (*a)->next;
 	tmp->next = *b;
 	*b = tmp;
-	*a = (*a)->next;
-	ft_putstr_fd(s, 1);
-	free(tmp1);
-	tmp1 = NULL;
+	if (s)
+		ft_putstr_fd(s, 1);
 }

@@ -6,12 +6,11 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:33:21 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/01 14:26:25 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/25 01:55:54 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
 void	swap_max_help(t_stk **b, t_stk **a, int max)
 {
@@ -65,6 +64,8 @@ int	*push_arr(t_stk *a, int len)
 	int	*s;
 
 	s = malloc(len * sizeof(int));
+	if (!s)
+		return (0);
 	i = 0;
 	while (a)
 	{
@@ -74,19 +75,17 @@ int	*push_arr(t_stk *a, int len)
 	return (s);
 }
 
-int	check_pivot(t_stk *a, int deff_pivot)
+int	*check_pivot(t_stk *a)
 {
-	t_stk1	y;
-	int		*s;
+	t_stk1		y;
+	int			*s;
 
 	y.max = ft_lstsize((t_list *)a);
-	if (y.max <= deff_pivot)
-		return (0);
 	s = push_arr(a, y.max);
 	y.i = -1;
 	while (!chek_sort_arr(s, y.max))
 	{
-		while (y.i++ < y.max - 1)
+		while (y.i++ < y.max - 2)
 		{
 			if (s[y.i] > s[y.i +1])
 			{
@@ -97,8 +96,5 @@ int	check_pivot(t_stk *a, int deff_pivot)
 		}
 		y.i = -1;
 	}
-	y.i = 0;
-	while (y.i < y.max / deff_pivot)
-		y.i++;
-	return (y.min = s[y.i], free(s), y.min);
+	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 15:42:51 by eelhafia          #+#    #+#             */
-/*   Updated: 2022/11/11 14:47:04 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:35:06 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@ static int	ft_isspace(int c)
 		return (0);
 }
 
+void	ft_error(char *s)
+{
+	ft_putstr_fd(s, 1);
+	exit(1);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	a;
-	int	r;
+	int		i;
+	long	a;
+	int		r;
 
 	r = 1;
 	a = 0;
@@ -43,5 +49,7 @@ int	ft_atoi(const char *str)
 		a = a * 10 + str[i] - 48;
 		i++;
 	}
+	if (((a * r) > 2147483647) || ((a * r) < -2147483648))
+		ft_error("Error !\n");
 	return (a * r);
 }
