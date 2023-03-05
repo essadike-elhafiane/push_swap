@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 23:42:27 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/19 08:55:22 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:41:24 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	ft_str_isdigit(char *str)
 		while (ft_isdigit(*str))
 			str++;
 		if (*str == '-')
+			return (0);
+		if (*str == '+')
 			return (0);
 		if (*str == ' ')
 			str++;

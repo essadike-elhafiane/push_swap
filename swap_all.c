@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:59:16 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/27 22:02:42 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:48:28 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,11 @@ void	swap_all(t_stk **a, t_stk **b)
 	t_stk1	y;
 	int		i;
 
-	y.i = 3;
 	i = 2;
-	if (ft_lstsize((t_list *) *a) >= 499)
-		y.i = 5;
 	y.j = ft_lstsize((t_list *) *a);
-	while (y.j > 15)
+	while (y.j > 10)
 	{
+		y.i = div_chan(y.j);
 		len_div(&y, a, y.i, i);
 		while (check_min(*a) <= y.max)
 		{
@@ -123,30 +121,3 @@ void	swap_all(t_stk **a, t_stk **b)
 	}
 	swap_all_help(a, b);
 }
-
-// void	swap_all(t_stk **a, t_stk **b)
-// {
-// 	t_stk1	y;
-// 	int		*s;
-
-// 	y.i = 20;
-// 	y.max = 1;
-// 	if (ft_lstsize((t_list *) *a) >= 499)
-// 		y.i = 50;
-// 	y.j = ft_lstsize((t_list *) *a);
-// 	s = check_pivot(*a);
-// 	while (y.j > y.i)
-// 	{
-// 		y.min = s[y.i * y.max++];
-// 		while (check_min(*a) <= y.min && y.i)
-// 		{
-// 			if (y.min >= (*a)->content)
-// 				pb(a, b, "pb\n");
-// 			else
-// 				ra(a, "ra\n");
-// 		}
-// 		y.j = ft_lstsize((t_list *) *a);
-// 	}
-// 	free(s);
-// 	swap_all_help(a, b);
-// }

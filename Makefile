@@ -6,7 +6,7 @@
 #    By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 18:34:16 by eelhafia          #+#    #+#              #
-#    Updated: 2023/02/26 18:21:56 by eelhafia         ###   ########.fr        #
+#    Updated: 2023/02/28 22:41:03 by eelhafia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,30 +34,30 @@ B_OBJ = $(B_SRC:.c=.o)
 all : $(NAME) $(NAME1)
 
 $(NAME) : $(OBJ)
-	@cd libft && make all
-	@$(AR) $(NAME) $(OBJ)
+	cd libft && make all
+	$(AR) $(NAME) $(OBJ)
 
-$(NAME1) : 
-	@$(CC) $(NAME) $(LIBFT) main.c -o $(NAME1)
+$(NAME1) : main.c
+	$(CC) $(NAME) $(LIBFT) main.c -o $(NAME1)
 	
 %.o: %.c push_swap.h
-	@$(CC) -c $<
+	$(CC) -c $<
 
 $(NB) : $(B_OBJ)
-	@cd libft && make all
-	@$(AR) $(NB) $(B_OBJ)
+	cd libft && make all
+	$(AR) $(NB) $(B_OBJ)
 
 bonus : $(NB) $(checker)
 	
-$(checker) : 
-	@$(CC) $(NB) $(LIBFT) -o $(checker)
+$(checker) : checker.c
+	$(CC) $(NB) $(LIBFT) -o $(checker)
 
 clean :
-	@cd libft && make clean
-	@$(RM) $(OBJ) $(B_OBJ)
+	cd libft && make clean
+	$(RM) $(OBJ) $(B_OBJ)
 
 fclean : clean
-	@cd libft && make fclean
-	@$(RM) $(NAME) $(NAME1) $(checker) $(NB)
+	cd libft && make fclean
+	$(RM) $(NAME) $(NAME1) $(checker) $(NB)
 	
 re : fclean all

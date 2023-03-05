@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:27:54 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/25 02:37:40 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:47:28 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-typedef struct stack
+typedef struct s_stack
 {
 	int				content;
-	struct stack	*next;
+	struct s_stack	*next;
 }	t_stk;
 
-typedef struct stack1
+typedef struct s_stack1
 {
 	int		i;
 	int		j;
@@ -77,4 +77,5 @@ void	swap_all_help(t_stk **a, t_stk **b);
 void	rr(t_stk **a, t_stk **b, char *s);
 void	double_mov(t_stk **a, t_stk **b, int i, int max);
 void	len_div(t_stk1 *y, t_stk **a, int div, int div_next);
+int		div_chan(int div);
 #endif

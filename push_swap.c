@@ -6,11 +6,23 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:29:34 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/26 22:54:59 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:50:51 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	div_chan(int div)
+{
+	int	i;
+
+	i = 7;
+	if (div <= 400)
+		i = 6;
+	if (div <= 200)
+		i = 3;
+	return (i);
+}
 
 void	swap_3_help(int min, int i, int max, t_stk **a)
 {

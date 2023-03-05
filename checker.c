@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 23:35:10 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/26 17:40:46 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/28 22:44:50 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_op_help(char *s, t_stk **a, t_stk **b)
 		return ;
 	else
 	{
-		write(1, "operation not fond !", 20);
+		write(1, "Error\n", 7);
 		exit(1);
 	}
 }
@@ -85,13 +85,13 @@ void	read_line(t_stk **a, t_stk **b)
 	lena = ft_lstsize((t_list *) *a);
 	if (check_sort(*a) && lena == len)
 	{
-		write(1, "OK", 2);
+		write(1, "OK\n", 3);
 		exit(0);
 	}
 	else
 	{
-		write(1, "KO", 2);
-		exit(1);
+		write(1, "KO\n", 3);
+		exit(0);
 	}
 }
 
@@ -109,8 +109,6 @@ int	main(int ac, char **av)
 	free_spl(y.spl);
 	if (multi_num(a))
 		ft_puterror("Error\n");
-	if (ft_lstsize((t_list *) a) == 1 || check_sort(a) == 1)
-		return (fun_free(&a), write(1, "OK", 2), 0);
 	read_line(&a, &b);
 	fun_free(&a);
 	return (0);

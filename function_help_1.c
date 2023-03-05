@@ -6,7 +6,7 @@
 /*   By: eelhafia <eelhafia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:00:36 by eelhafia          #+#    #+#             */
-/*   Updated: 2023/02/25 02:42:36 by eelhafia         ###   ########.fr       */
+/*   Updated: 2023/02/28 01:04:50 by eelhafia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	double_mov(t_stk **a, t_stk **b, int i, int max)
 	y.min = ft_lstsize((t_list *) *b);
 	if (y.min > 2)
 	{
-		if ((*a)->content > max && (*b)->content < i)
+		if ((*a)->content > max && (*b)->content > i)
 			rr(a, b, "rr\n");
-		else if ((*b)->content < i)
+		else if ((*b)->content > i)
 			ra(b, "rb\n");
 	}
 }
