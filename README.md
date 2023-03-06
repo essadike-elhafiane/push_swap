@@ -18,7 +18,6 @@ for run tester
 => make bonus
 <br>
 =>./bach.sh <size_of_numbers> <max_of_instructions>
-<hr>
 example 
 
 => ./bach.sh 500 5500
