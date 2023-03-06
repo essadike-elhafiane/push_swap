@@ -4,9 +4,10 @@
 
 
 for test program push_swap 
-<hr>
+
 => make 
 <hr>
+
 for test checher
 
 => make bonus
