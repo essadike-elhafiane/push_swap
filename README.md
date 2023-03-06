@@ -1,6 +1,6 @@
 # push_swap 
 
-<h2 aling="center"> program of sorting </h2>
+<h2 aling="center" > program of sorting </h2>
 
 
 for test program push_swap 
@@ -14,7 +14,9 @@ for test checher
 for run tester
 
 => make
+<br>
 => make bonus
+<br>
 =>./bach.sh <size_of_numbers> <max_of_instructions>
 <hr>
 example 
