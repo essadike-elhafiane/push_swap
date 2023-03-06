@@ -1,6 +1,6 @@
 # push_swap 
 
-<h2 aling="center" > program of sorting </h2>
+<h2 align="center" > program of sorting </h2>
 
 
 for test program push_swap 
